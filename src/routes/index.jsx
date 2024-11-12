@@ -3,12 +3,16 @@ import Home from "../views/home";
 import PostIndex from "../views/posts";
 import PostCreate from "../views/posts/create";
 import PostEdit from "../views/posts/edit";
+import Login from "../views/pages/login";
 
 function RoutesIndex(){
     return(
         <Routes>
+            
 
-            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+
+            <Route path="/login" element={<Login />} />
 
             <Route path="/posts" element={<PostIndex />} />
 

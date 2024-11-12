@@ -1,15 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
  
 //import routes
 import Routes from "./routes";
  
 export default function App() {
+
+  const navigate = useNavigate();
+
+  // Fungsi logout untuk menghapus token dan mengarahkan pengguna ke halaman login
+  const logoutHandler = () => {
+    // Hapus token dari localStorage
+    localStorage.removeItem('token');
+    
+    // Redirect ke halaman login
+    navigate('/login');
+  };
   return (
     <>
       <div>
         <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
           <div className="container">
-            <Link to="/" className="navbar-brand">
+            <Link to="/home" className="navbar-brand">
               HOME
             </Link>
             <button
@@ -36,6 +47,16 @@ export default function App() {
                   >
                     Anime
                   </Link>
+                </li>
+              </ul>
+              <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <button
+                    className="btn btn-danger"
+                    onClick={logoutHandler}
+                  >
+                    Logout
+                  </button>
                 </li>
               </ul>
             </div>
